@@ -10,16 +10,27 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: linear-gradient(45deg, #1a2a44, #2d2d2d, #8b5a2b, #1a2a44);
-    background-size: 400%;
-    background-repeat: no-repeat;
-    background-position: center;
-    animation: colorShift 8s steps(4) infinite;
+    background: #1a2a44;
+    position: relative;
+    overflow: hidden;
 }
 
-@keyframes colorShift {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 400% 50%; }
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, #1a2a44, #2d2d2d, #8b5a2b, #1a2a44);
+    background-size: 50%;
+    animation: rotateGradient 10s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotateGradient {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 section {
@@ -37,10 +48,15 @@ section {
     padding: 2rem 3rem;
 }
 
+form {
+    width: 100%;
+}
+
 h1 {
     font-size: 2rem;
     color: #fff;
     text-align: center;
+    margin-bottom: 1rem;
 }
 
 .inputbox {
@@ -59,12 +75,13 @@ h1 {
     color: #fff;
     font-size: 1rem;
     pointer-events: none;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease;
 }
 
-input:focus ~ label,
-input:valid ~ label {
+.inputbox input:focus ~ label,
+.inputbox input:valid ~ label {
     top: -5px;
+    font-size: 0.8rem;
 }
 
 .inputbox input {
@@ -80,18 +97,20 @@ input:valid ~ label {
 
 .inputbox ion-icon {
     position: absolute;
-    right: 5px;
+    right: 8px;
     color: #fff;
     font-size: 1.2rem;
-    top: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .forget {
-    margin: 35px 0;
+    margin: 20px 0;
     font-size: 0.85rem;
     color: #fff;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
 }
 
@@ -101,7 +120,7 @@ input:valid ~ label {
 }
 
 .forget label input {
-    margin-right: 3px;
+    margin-right: 5px;
 }
 
 .forget a {
@@ -121,12 +140,99 @@ button {
     background: linear-gradient(45deg, #2d2d2d, #4b4b4b);
     border: none;
     outline: none;
-sums    cursor: pointer;
+    cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
     color: #fff;
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
 }
 
 button:hover {
-    background: linear-gradient(45deg, #1a1a1a, #3b3b3b
+    background: linear-gradient(45deg, #1a1a1a, #3b3b3b);
+}
+
+.register {
+    font-size: 0.9rem;
+    color: #fff;
+    text-align: center;
+    margin: 20px 0 10px;
+}
+
+.register button {
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    background: linear-gradient(45deg, #8b5a2b, #a6763e);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.register button:hover {
+    background: linear-gradient(45deg, #6b4b1e, #8b5a2b);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    section {
+        padding: 1.5rem 2rem;
+        max-width: 90%;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .inputbox {
+        max-width: 100%;
+    }
+
+    .inputbox input {
+        height: 45px;
+        font-size: 0.9rem;
+    }
+
+    .inputbox ion-icon {
+        font-size: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .forget {
+        font-size: 0.8rem;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    button, .register button {
+        height: 35px;
+        font-size: 0.9rem;
+    }
+
+    .register {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 1rem 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    .inputbox input {
+        height: 40px;
+        font-size: 0.85rem;
+    }
+
+    .inputbox label {
+        font-size: 0.9rem;
+    }
+}
