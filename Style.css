@@ -10,27 +10,11 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: #1a2a44;
-    position: relative;
-    overflow: hidden;
-}
-
-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 200%;
     background: linear-gradient(45deg, #1a2a44, #2d2d2d, #8b5a2b, #1a2a44);
-    background-size: 50%;
-    animation: rotateGradient 10s linear infinite;
-    z-index: -1;
-}
-
-@keyframes rotateGradient {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: auto; /* Allows zooming without clipping */
 }
 
 section {
@@ -173,66 +157,4 @@ button:hover {
 }
 
 .register button:hover {
-    background: linear-gradient(45deg, #6b4b1e, #8b5a2b);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    section {
-        padding: 1.5rem 2rem;
-        max-width: 90%;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    .inputbox {
-        max-width: 100%;
-    }
-
-    .inputbox input {
-        height: 45px;
-        font-size: 0.9rem;
-    }
-
-    .inputbox ion-icon {
-        font-size: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    .forget {
-        font-size: 0.8rem;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    button, .register button {
-        height: 35px;
-        font-size: 0.9rem;
-    }
-
-    .register {
-        font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 480px) {
-    section {
-        padding: 1rem 1.5rem;
-    }
-
-    h1 {
-        font-size: 1.2rem;
-    }
-
-    .inputbox input {
-        height: 40px;
-        font-size: 0.85rem;
-    }
-
-    .inputbox label {
-        font-size: 0.9rem;
-    }
-}
+    background: linear-gradient(45deg, #6b4b1e, #8b5a2
